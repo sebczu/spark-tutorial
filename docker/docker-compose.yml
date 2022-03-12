@@ -2,15 +2,19 @@ version: '3.3'
 services:
 
   spark-master-service:
-    image: bitnami/spark:${SPARK_VERSION}
+    image: spark-tutorial:0.0.1
+    user: root
     container_name: spark-master-container
     ports:
       - 8080:8080
+      - 4040:4040
+      - 18080:18080
     environment:
       - SPARK_MODE=master
 
   spark-worker1-service:
     image: bitnami/spark:${SPARK_VERSION}
+    user: root
     container_name: spark-worker1-container
     ports:
       - 8081:8081
@@ -20,6 +24,7 @@ services:
 
   spark-worker2-service:
     image: bitnami/spark:${SPARK_VERSION}
+    user: root
     container_name: spark-worker2-container
     ports:
       - 8082:8081
